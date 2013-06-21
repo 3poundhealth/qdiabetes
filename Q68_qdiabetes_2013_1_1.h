@@ -23,11 +23,11 @@
  * Inaccurate implementations of risk scores can lead to wrong patients being given the wrong treatment.
  * 
  * This file has been auto-generated.
- * XML source: Q68_qdiabetes_2013_1_0.xml
+ * XML source: Q68_qdiabetes_2013_1_1.xml
  * STATA dta time stamp: 15 Feb 2013 11:36
- * Header file create date: Fri 15 Feb 2013 11:40:31 GMT
+ * Header file create date: Fri 15 Feb 2013 11:40:42 GMT
  */
 
-double type2_female(
+double type2_male(
 int age,int b_corticosteroids,int b_cvd,int b_treatedhyp,double bmi,int ethrisk,int fh_diab,int smoke_cat,int surv,double town,int *error,char *errorBuf,int errorBufSize,int debug
 );

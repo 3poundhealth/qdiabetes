@@ -74,16 +74,15 @@ def eval options = {}
       @bmi_upper                             * @bmi_continuous                       [@gender][:bmi_upper]    +
       @bmi_lower                             * @bmi_continuous                       [@gender][:bmi_lower]    +
       @diabetes_relative                     * @diabetes_relative_independent        [@gender]                +
+      @corticosteroids                       * @corticosteroids_independent          [@gender]                +
+      @heart_disease                         * @heart_disease_independent            [@gender]                +
       @blood_pressure_treatment              * @blood_pressure_treatment_independent [@gender],
 
-
       #age spread dependent risks
-      @age_upper                             * @age_continuous                       [@gender][:age_upper]    +
       @age_upper * @diabetes_relative        * @diabetes_relative_dependent          [@gender][:age_upper]    +
       @age_upper * @bmi_upper * @bmi_dependent             [@gender][:age_upper][:bmi_upper]                  +
       @age_upper * @bmi_lower * @bmi_dependent             [@gender][:age_upper][:bmi_lower],
 
-      @age_lower                             * @age_continuous                       [@gender][:age_lower]    +
       @age_lower * @diabetes_relative        * @diabetes_relative_dependent          [@gender][:age_lower]    +
       @age_lower * @bmi_upper * @bmi_dependent             [@gender][:age_lower][:bmi_upper]                  +
       @age_lower * @bmi_lower * @bmi_dependent             [@gender][:age_lower][:bmi_lower],
@@ -215,8 +214,8 @@ def AGE_RANGE; (25..84); end
 
 
 def BLOOD_PRESSURE_TREATMENT_INDEPENDENT;{
-  male:                   0.6570994445804946300000000,
-  female:                 0.6183822524814552900000000
+  male:                   0.5010787979849035100000000,
+  female:                 0.5314598436974725700000000
 };end
 
 def BMI_SCALE;            0.1; end

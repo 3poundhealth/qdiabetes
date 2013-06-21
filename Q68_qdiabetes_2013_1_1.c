@@ -26,38 +26,38 @@
  *   Inaccurate implementations of risk scores can lead to wrong patients being given the wrong treatment.
  * 
  * This file has been auto-generated.
- * XML source: Q68_qdiabetes_2013_1_0.xml
+ * XML source: Q68_qdiabetes_2013_1_1.xml
  * STATA dta time stamp: 15 Feb 2013 11:36
- * This file was created on: Fri 15 Feb 2013 11:40:31 GMT
+ * This file was created on: Fri 15 Feb 2013 11:40:42 GMT
  */
 
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
-#include <Q68_qdiabetes_2013_1_0.h>
+#include <Q68_qdiabetes_2013_1_1.h>
 #include <utils.h>
 
-static double type2_female_raw(
+static double type2_male_raw(
 int age,int b_corticosteroids,int b_cvd,int b_treatedhyp,double bmi,int ethrisk,int fh_diab,int smoke_cat,int surv,double town,int debug
 )
 {
 	double survivor[16] = {
 		0,
-		0.998714804649353,
-		0.997435748577118,
-		0.996052920818329,
-		0.994562506675720,
-		0.992949724197388,
-		0.991141080856323,
-		0.989293158054352,
-		0.987293541431427,
-		0.985133886337280,
-		0.982810735702515,
-		0.980465650558472,
-		0.978020071983337,
-		0.975493073463440,
-		0.972945988178253,
-		0.970350146293640
+		0.998213708400726,
+		0.996353209018707,
+		0.994382798671722,
+		0.992213606834412,
+		0.989733397960663,
+		0.987064540386200,
+		0.984254062175751,
+		0.981255292892456,
+		0.977990627288818,
+		0.974455237388611,
+		0.970843732357025,
+		0.967315018177032,
+		0.963437378406525,
+		0.959633111953735,
+		0.955690681934357
 	};
 
 	/* The conditional arrays */
@@ -65,21 +65,21 @@ int age,int b_corticosteroids,int b_cvd,int b_treatedhyp,double bmi,int ethrisk,
 	double Iethrisk[10] = {
 		0,
 		0,
-		1.2672136244963337000000000,
-		1.4277605208830098000000000,
-		1.8624060798103199000000000,
-		1.2379988338989651000000000,
-		0.4709034172907677900000000,
-		0.3476400901703160500000000,
-		1.1587283467731935000000000,
-		0.7335499325010315100000000
+		1.2366090720913343000000000,
+		1.4716746107789032000000000,
+		1.8073235649498174000000000,
+		1.2056055595936399000000000,
+		0.6032369975938766100000000,
+		0.9095436207452737300000000,
+		0.9137604632927512900000000,
+		0.7123719045990779500000000
 	};
 	double Ismoke[5] = {
 		0,
-		0.1012537024947505100000000,
-		0.1915520564380613400000000,
-		0.3091894136143333900000000,
-		0.4646730392693820800000000
+		0.1618238582395977700000000,
+		0.1902020385619117000000000,
+		0.3210636179312467100000000,
+		0.4140001301797494600000000
 	};
 
 	/* Applying the fractional polynomial transforms */
@@ -87,20 +87,20 @@ int age,int b_corticosteroids,int b_cvd,int b_treatedhyp,double bmi,int ethrisk,
 
 	double dage = age;
 	dage=dage/10;
-	double age_1 = pow(dage,.5);
+	double age_1 = log(dage);
 	double age_2 = pow(dage,3);
 	double dbmi = bmi;
 	dbmi=dbmi/10;
-	double bmi_1 = dbmi;
+	double bmi_1 = pow(dbmi,2);
 	double bmi_2 = pow(dbmi,3);
 
 	/* Centring the continuous variables */
 
-	age_1 = age_1 - 2.135220289230347;
-	age_2 = age_2 - 94.766799926757813;
-	bmi_1 = bmi_1 - 2.549620866775513;
-	bmi_2 = bmi_2 - 16.573980331420898;
-	//town = town - -0.224075347185135;
+	age_1 = age_1 - 1.496771812438965;
+	age_2 = age_2 - 89.149559020996094;
+	bmi_1 = bmi_1 - 6.832604885101318;
+	bmi_2 = bmi_2 - 17.859918594360352;
+	//town = town - -0.132148191332817;
 
 if(debug) printf("a1: %6.2f, a2: %6.2f\n", age_1, age_2);
 if(debug) printf("b1: %6.2f, b2: %6.2f\n", bmi_1, bmi_2);
@@ -115,52 +115,52 @@ if(debug) printf("b1: %6.2f, b2: %6.2f\n", bmi_1, bmi_2);
 
 	/* Sum from continuous values */
 
-	a += age_1 * 4.3848331212989669000000000;
-	a += age_2 * -0.0049763964406541149000000;
-	a += bmi_1 * 3.3753336326064329000000000;
-	a += bmi_2 * -0.0631628488667318330000000;
-	//a += town * 0.0432726992998635970000000;
+	a += age_1 * 4.4205598323371680000000000;
+	a += age_2 * -0.0041132238299394193000000;
+	a += bmi_1 * 1.1169895991721528000000000;
+	a += bmi_2 * -0.1793529530251269100000000;
+	//a += town * 0.0291530815903822650000000;
 
 	/* Sum from boolean values */
 
-	a += b_corticosteroids * 0.2681990966241487000000000;
-	a += b_cvd * 0.3596176830984252900000000;
-	a += b_treatedhyp * 0.5314598436974725700000000;
-	a += fh_diab * 0.7315358845837640600000000;
+	a += b_corticosteroids * 0.2059811979905692400000000;
+	a += b_cvd * 0.3914728454990503100000000;
+	a += b_treatedhyp * 0.5010787979849035100000000;
+	a += fh_diab * 0.8385800403428993500000000;
 
 if(debug)
   printf("tr:%5.2f, rl:%5.2f\n",
-  b_treatedhyp * 0.5314598436974725700000000,
-  fh_diab * 0.7315358845837640600000000
+  b_treatedhyp * 0.5010787979849035100000000,
+  fh_diab * 0.8385800403428993500000000
   );
 
 	/* Sum from interaction terms */
 
-	a += age_1 * bmi_1 * 1.3037832873997990000000000;
-	a += age_1 * bmi_2 * -0.0708293717769046120000000;
-	a += age_1 * fh_diab * -0.7968266815834251800000000;
-	a += age_2 * bmi_1 * -0.0067725323761278549000000;
-	a += age_2 * bmi_2 * 0.0002374980728666116700000;
-	a += age_2 * fh_diab * 0.0017048228889394394000000;
+	a += age_1 * bmi_1 * 0.5051031253768063500000000;
+	a += age_1 * bmi_2 * -0.1375233635462656000000000;
+	a += age_1 * fh_diab * -1.1463560542602569000000000;
+	a += age_2 * bmi_1 * -0.0015800686452772700000000;
+	a += age_2 * bmi_2 * 0.0003394090057824062300000;
+	a += age_2 * fh_diab * 0.0018524160353981260000000;
 
 if(debug){
   printf("i:%6.2f u:%6.2f l:%6.2f er:%6.2f\n",
     Iethrisk[ethrisk]+
     Ismoke[smoke_cat]+
-    bmi_1 * 3.3753336326064329000000000+
-    bmi_2 * -0.0631628488667318330000000+
-    b_treatedhyp * 0.5314598436974725700000000+
-    b_corticosteroids * 0.2681990966241487000000000+
-    b_cvd * 0.3596176830984252900000000+
-    fh_diab * 0.7315358845837640600000000,
+    bmi_1 * 1.1169895991721528000000000+
+    bmi_2 * -0.1793529530251269100000000+
+    b_treatedhyp * 0.5010787979849035100000000+
+    b_corticosteroids * 0.2059811979905692400000000+
+    b_cvd * 0.3914728454990503100000000+
+    fh_diab * 0.8385800403428993500000000,
 
-    age_1 * bmi_1 * 1.3037832873997990000000000+
-    age_1 * bmi_2 * -0.0708293717769046120000000+
-    age_1 * fh_diab * -0.7968266815834251800000000,
+    age_1 * bmi_1 * 0.5051031253768063500000000+
+    age_1 * bmi_2 * -0.1375233635462656000000000+
+    age_1 * fh_diab * -1.1463560542602569000000000,
 
-    age_2 * bmi_1 * -0.0067725323761278549000000+
-    age_2 * bmi_2 * 0.0002374980728666116700000+
-    age_2 * fh_diab * 0.0017048228889394394000000,
+    age_2 * bmi_1 * -0.0015800686452772700000000+
+    age_2 * bmi_2 * 0.0003394090057824062300000+
+    age_2 * fh_diab * 0.0018524160353981260000000,
 
     Iethrisk[ethrisk]
   );
@@ -170,7 +170,7 @@ if(debug){
 	return score;
 }
 
-static int type2_female_validation(
+static int type2_male_validation(
 int age,int b_corticosteroids,int b_cvd,int b_treatedhyp,double bmi,int ethrisk,int fh_diab,int smoke_cat,int surv,double town,char *errorBuf,int errorBufSize
 )
 {
@@ -219,14 +219,14 @@ int age,int b_corticosteroids,int b_cvd,int b_treatedhyp,double bmi,int ethrisk,
 	return ok;
 }
 
-double type2_female(
+double type2_male(
 int age,int b_corticosteroids,int b_cvd,int b_treatedhyp,double bmi,int ethrisk,int fh_diab,int smoke_cat,int surv,double town,int *error,char *errorBuf,int errorBufSize,int debug
 )
 {/*
-*error = 0;	int ok = type2_female_validation(age,b_corticosteroids,b_cvd,b_treatedhyp,bmi,ethrisk,fh_diab,smoke_cat,surv,town,errorBuf,errorBufSize);
-	if(!ok) {
+	*error = 0;	int ok = type2_male_validation(age,b_corticosteroids,b_cvd,b_treatedhyp,bmi,ethrisk,fh_diab,smoke_cat,surv,town,errorBuf,errorBufSize);
+	if(!ok) { 
 		*error = 1;
 		return 0.0;
 	} */
-	return type2_female_raw(age,b_corticosteroids,b_cvd,b_treatedhyp,bmi,ethrisk,fh_diab,smoke_cat,surv,town,debug);
+	return type2_male_raw(age,b_corticosteroids,b_cvd,b_treatedhyp,bmi,ethrisk,fh_diab,smoke_cat,surv,town,debug);
 }

@@ -23,14 +23,14 @@
  * Inaccurate implementations of risk scores can lead to wrong patients being given the wrong treatment.
  * 
  * This file has been auto-generated.
- * XML source: Q68_qdiabetes_2013_1_0.xml
+ * XML source: Q68_qdiabetes_2013_1_1.xml
  * STATA dta time stamp: 15 Feb 2013 11:36
- * C file create date: Fri 15 Feb 2013 11:40:31 GMT
+ * C file create date: Fri 15 Feb 2013 11:40:42 GMT
  */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <Q68_qdiabetes_2013_1_0.h>
+#include <Q68_qdiabetes_2013_1_1.h>
 
 static double score[16];
 static char errorBuf[1024];
@@ -61,12 +61,12 @@ void usage(void) {
 	printf(" * Inaccurate implementations of risk scores can lead to wrong patients being given the wrong treatment.\n");
 	printf(" *\n");
 	printf(" * This file has been auto-generated.\n");
-	printf(" * XML source: Q68_qdiabetes_2013_1_0.xml\n");
+	printf(" * XML source: Q68_qdiabetes_2013_1_1.xml\n");
 	printf(" * STATA dta time stamp: 15 Feb 2013 11:36\n");
-	printf(" * C file create date: Fri 15 Feb 2013 11:40:31 GMT\n");
+	printf(" * C file create date: Fri 15 Feb 2013 11:40:42 GMT\n");
 	printf(" *\n");
 	printf("Usage:\n");
-	printf("  Q68_qdiabetes_2013_1_0_commandLine age b_corticosteroids b_cvd b_treatedhyp bmi ethrisk fh_diab smoke_cat surv town\n");
+	printf("  Q68_qdiabetes_2013_1_1_commandLine age b_corticosteroids b_cvd b_treatedhyp bmi ethrisk fh_diab smoke_cat surv town\n");
 }
 
 int main (int argc, char *argv[]) {
@@ -87,7 +87,7 @@ int main (int argc, char *argv[]) {
 	double town = atof(argv[10]);
 	int debug = argc == 12 ? atoi(argv[11]) : 0;
 
-	double score = type2_female(age,b_corticosteroids,b_cvd,b_treatedhyp,bmi,ethrisk,fh_diab,smoke_cat,surv,town,&error,errorBuf,sizeof(errorBuf),debug);
+	double score = type2_male(age,b_corticosteroids,b_cvd,b_treatedhyp,bmi,ethrisk,fh_diab,smoke_cat,surv,town,&error,errorBuf,sizeof(errorBuf),debug);
 	if (error) {
 		printf("%s", errorBuf);
 		exit(1);
